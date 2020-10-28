@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="myForm">
+      <form
+        action="#"
+        method="POST"
+        id="data"
+        name="data"
+        enctype="multipart/form-data"
+      >
+        <input
+          type="text"
+          class="fio"
+          name="fio"
+          placeholder="Введите вашу фамилию, имя и отчество"
+        />
+        <input
+          type="email"
+          class="email"
+          name="email"
+          placeholder="Введите email"
+        />
+        <input
+          type="tel"
+          class="phone"
+          name="phone"
+          placeholder="Введите телефон"
+        />
+        <button type="submit" id="submitButton">Отправить</button>
+      </form>
+      <div id="resultContainer"></div>
+    </div>
+    <script src="/index.js"></script>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+* {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+#myForm {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 20px auto;
+  max-width: 1240px;
+  width: 60%;
+}
+
+#data {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.fio,
+.email,
+.phone {
+  margin-bottom: 15px;
+  width: 100%;
+  height: 30px;
+  padding-left: 10px;
+  font-size: 15px;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
+#submitButton {
+  background-color: aliceblue;
+  cursor: pointer;
+  border-radius: 5px;
+  color: gray;
+  padding: 10px 10px;
+  margin: auto;
+}
+
+#resultContainer {
+  background-color: aliceblue;
+  width: 50%;
+  height: 20px;
+  margin: 20px auto;
+  padding-top: 50px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.error {
+  border: 1px solid red;
+}
