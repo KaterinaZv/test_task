@@ -184,6 +184,8 @@ class MyForm {
     this.emailInput.disabled = true;
     this.phoneInput.disabled = true;
     this.nameInput.disabled = true;
+    resultContainer.className = "";
+    resultContainer.innerHTML = "";
   }
 
   _activateForm() {
@@ -201,12 +203,14 @@ class MyForm {
     this.buttonElement.disabled = false;
 
     resultContainer.innerText = data.status;
+    resultContainer.classList.add("success");
 
     this._activateForm();
   }
 
   _onRequestFail(data) {
     if (data.status === "progress") {
+      resultContainer.classList.add("progress");
       this._polling();
     } else {
       this._activateForm();
@@ -214,6 +218,7 @@ class MyForm {
 
     this.buttonElement.disabled = false;
     resultContainer.innerHTML = data.status;
+    resultContainer.classList.add("error");
   }
 }
 
