@@ -45,7 +45,9 @@
   width: 50%;
   height: 20px;
   margin: 20px auto;
-  padding-top: 50px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: gray;
   border: 1px solid gray;
   border-radius: 5px;
   text-align: center;

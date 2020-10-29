@@ -18,15 +18,13 @@ class MyForm {
 
   validate() {
     const data = this.getData();
-    console.log(data.fio);
     let resultName, resultPhone, resultEmail;
     let errorFields = [];
 
     // Проверка на валидацию имени
     if (data.fio.split(" ").length === 3) {
-      resultName = data.fio.value;
+      resultName = data.fio;
     } else {
-      // const name = document.querySelector(".fio");
       this.name.classList.add("error");
       this.name.value = "";
       this.name.placeholder = "Ровно Три Слова";
@@ -37,9 +35,8 @@ class MyForm {
     const reg = /^[a-zA-Z0-9_.]+@(gmail\.com|(yandex|mail)\.ru)$/;
     const resultTestEmail = reg.test(data.email);
     if (resultTestEmail) {
-      resultEmail = data.email.value;
+      resultEmail = data.email;
     } else {
-      // const email = document.querySelector(".email");
       this.email.classList.add("error");
       this.email.value = "";
       this.email.placeholder =
@@ -49,7 +46,7 @@ class MyForm {
 
     // Проверка на валидацию номера
     const regPhone = /\+7\(\d{3}\)\d{3}-\d{2}-\d{2}/;
-    const resultTestPhone = regPhone.test(data.phone.value);
+    const resultTestPhone = regPhone.test(data.phone);
 
     const sumNum = data.phone
       .split("")
@@ -62,9 +59,8 @@ class MyForm {
     }
 
     if (resultTestPhone && sumNum < 30) {
-      resultPhone = data.phone.value;
+      resultPhone = data.phone;
     } else {
-      // const phone = document.querySelector(".phone");
       this.phone.classList.add("error");
       this.phone.value = "";
       this.phone.placeholder = "В формате +7(999)999-99-99";
@@ -106,6 +102,7 @@ class MyForm {
     const button = this.form.querySelector("#submitButton");
     if (this.validate().isValid) {
       button.disabled = true;
+      this.form.reset();
       this.sendRequest(URL_SUCCESS).then(
         (data) => (resultContainer.innerText = data.status)
       );
@@ -130,5 +127,5 @@ class MyForm {
 document.addEventListener("submit", (e) => {
   e.preventDefault();
   const form = new MyForm("data");
-  console.log(form.submit());
+  form.submit();
 });
