@@ -1,7 +1,5 @@
 "use strict";
 
-const resultContainer = document.querySelector("#resultContainer");
-
 class Validation {
   constructor() {
     this.emailRegex = /^[a-zA-Z0-9_.]+@(gmail\.com|(yandex|mail)\.ru)$/;
@@ -85,6 +83,7 @@ class MyForm {
     this.nameInput = document.querySelector(".fio");
     this.emailInput = document.querySelector(".email");
     this.phoneInput = document.querySelector(".phone");
+    this.resultContainer = document.querySelector("#resultContainer");
 
     this.buttonElement = this.formElement.querySelector("#submitButton");
 
@@ -168,6 +167,10 @@ class MyForm {
   submit() {
     if (this.validate().isValid) {
       this._disableForm();
+
+      this.resultContainer.className = "";
+      this.resultContainer.innerHTML = "";
+
       const formEndpointUrl = this.formElement.getAttribute("action");
 
       const apiService = new FakeApiService();
@@ -184,8 +187,6 @@ class MyForm {
     this.emailInput.disabled = true;
     this.phoneInput.disabled = true;
     this.nameInput.disabled = true;
-    resultContainer.className = "";
-    resultContainer.innerHTML = "";
   }
 
   _activateForm() {
@@ -202,23 +203,23 @@ class MyForm {
   _onRequestSuccess(data) {
     this.buttonElement.disabled = false;
 
-    resultContainer.innerText = data.status;
-    resultContainer.classList.add("success");
+    this.resultContainer.innerText = data.status;
+    this.resultContainer.classList.add("success");
 
     this._activateForm();
   }
 
   _onRequestFail(data) {
     if (data.status === "progress") {
-      resultContainer.classList.add("progress");
+      this.resultContainer.classList.add("progress");
       this._polling();
     } else {
       this._activateForm();
     }
 
     this.buttonElement.disabled = false;
-    resultContainer.innerHTML = data.status;
-    resultContainer.classList.add("error");
+    this.resultContainer.innerHTML = data.status;
+    this.resultContainer.classList.add("error");
   }
 }
 
